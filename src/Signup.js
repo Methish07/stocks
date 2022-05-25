@@ -3,10 +3,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 const Signup = () => {
+
     const [firstname,setfirstname]=useState('');
     const [lastname,setlastname]=useState('');
     const [email,setemail]=useState('');
     const [password,setpassword]=useState('');
+
+    
     const paperstyle={padding:20,height:'70vh',width:300,margin:'20px auto'}
     const textfieldStyle={padding:10,margin:'2px 2px'}
     const btnstyle={padding:10,margin:'2px 2px'}
