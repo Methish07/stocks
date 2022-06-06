@@ -1,20 +1,22 @@
 import React from 'react'
 import Plot from 'react-plotly.js'
-const PlotData = () => {
+const PlotData = (props) => {
+
+  console.log(props.price)
   return (
     <div>
-    <Plot
+      <Plot
         data={[
           {
-            x: [1,2,3],
-            y: [4,5,6],
+            x: props.date,
+            y: props.price,
             type: 'scatter',
             mode: 'lines+markers',
-            marker: {color: 'red'},
+            marker: { color: 'red' },
           },
-          {type: 'bar', x: [1,2,3], y: [4,5,6]},
+          
         ]}
-        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+        layout={{ width: 1330, height: 500, title: props.title }}
       />
     </div>
   )
