@@ -1,0 +1,6 @@
+ <input type="text"
+    id="stock_name"
+    label=""
+    value={stock_name}
+    onChange={(e)=>{setstock_name(e.target.value)}}
+  />

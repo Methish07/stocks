@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PlotData from './plot'
+import './index.css'
 const Bar = () => {
   const [data, setdata] = useState([])
   let openprice = []
@@ -9,31 +10,40 @@ const Bar = () => {
   let date = []
   const gridstyle={margin:0,padding:0}
   const stocks = async () => {
-    try {
-      const options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
-          'X-RapidAPI-Key': 'fb0a39d437msh61f745319c3541bp16790bjsndb2b27a3b95a'
-        }
-      };
+    const axios = require("axios");
 
-      fetch('https://yh-finance.p.rapidapi.com/stock/v3/get-historical-data?symbol=AAPL&region=US', options)
-        .then(response => response.json())
-        .then((res) => {
-          console.log(res)
-          setdata(res.prices)
-        })
-    }
-    catch (err) {
-      console.log(err.message)
+    const options = {
+      method: 'GET',
+      url: 'https://yh-finance.p.rapidapi.com/stock/v3/get-chart',
+      params: {
+        interval: '1wk',
+        symbol: 'AMRN',
+        range: '10y',
+        region: 'US',
+        includePrePost: 'false',
+        useYfid: 'true',
+        includeAdjustedClose: 'true',
+        events: 'capitalGain,div,split'
+      },
+      headers: {
+        'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
+        'X-RapidAPI-Key': 'bfd626e4b2msh7d60bf944177e7fp12d3e4jsn03a6f4098418'
+      }
     };
+    
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
   }
   useEffect(() => {
     stocks()
   }, [])
+
+
   console.log(data)
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < 100; i++) {
     highprice.push(data[i].high)
     lowprice.push(data[i].low)
     openprice.push(data[i].open)
@@ -45,10 +55,17 @@ const Bar = () => {
     <div>
       <br></br>
       <br></br>
+     <div className='main_sep'>
+     <div className='plot_sep'>
       <PlotData price={openprice} date={date} title={"Open-price"} />
       <PlotData price={closeprice} date={date} title={"Close-price"} />
+      </div>
+      <div className='plot_sep'>
       <PlotData price={lowprice} date={date} title={"Low-price"} />
     <PlotData price={highprice} date={date} title={"High-price"} />
+      </div>
+     </div>
+      
      </div>
   )
 }

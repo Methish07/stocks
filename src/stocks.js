@@ -1,39 +1,41 @@
-import React from 'react'
-import useEffect from 'react'
+import React, { useEffect, useState } from 'react'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+
 const Stocks = () => {
 
- /* const stocks2=async()=>{
-    try{
-      const options = {
-        method: 'GET',
-        headers: {
-          'X-RapidAPI-Host': 'yh-finance.p.rapidapi.com',
-          'X-RapidAPI-Key': 'fb0a39d437msh61f745319c3541bp16790bjsndb2b27a3b95a'
-        }
-      };
-      
-      fetch('https://yh-finance.p.rapidapi.com/stock/v2/get-recommendations?symbol=INTC', options)
-        .then(response => response.json())
-        .then(response => console.log(response))
+  const [stock_name,setstock_name]=useState('')
+  const [stock_list,setstock_list]=useState([])
 
-    }
-    catch (err) {
-      console.log(err.message)
-    }
+const SubmitHandler=(e)=>{
+console.log(stock_name)
+setstock_list([...stock_list,stock_name])
+setstock_name('')
 
-  }*/
-//useEffect(() => {
+}
 
-  //stocks2()
+console.log(stock_list)
 
-
-
-//}, [])
 
   return (
-    <div>
+    <div className='sidebar'>
+<form>
+<input type="button" value="enter symbol" onClick={()=>{setstock_name(prompt("enter name"))}}></input>
+  <input type="button" value="add stock" onClick={SubmitHandler}></input>
+
+</form>
+{
+  stock_list.map((i)=>{
+    return(
+      <div key={i}>
+        <Button >{i}</Button>
+        </div>
+    )
+  })
+}
     </div>
   )
 }
+
 
 export default Stocks

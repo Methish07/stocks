@@ -1,3 +1,14 @@
-.logo_img{
-width: 100px;
+.seperator{
+    display:flex;
+    flex-direction:row;
+
+}
+.plot_sep{
+    display: flex;
+    flex-direction: row;
+}
+.main_sep{
+    display: flex;
+    flex-direction: column;
+    margin-right: 0;
 }

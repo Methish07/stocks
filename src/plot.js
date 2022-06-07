@@ -1,8 +1,6 @@
 import React from 'react'
 import Plot from 'react-plotly.js'
 const PlotData = (props) => {
-
-  console.log(props.price)
   return (
     <div>
       <Plot
@@ -16,7 +14,7 @@ const PlotData = (props) => {
           },
           
         ]}
-        layout={{ width: 1330, height: 500, title: props.title }}
+        layout={{ width: 700, height: 500, title: props.title }}
       />
     </div>
   )
