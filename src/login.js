@@ -15,8 +15,8 @@ const Login = () => {
     console.log(password);
     setusername('');
     setpassword('');
-    alert(username+"sucessfully logged in");
-    window.
+    alert(username+"  sucessfully logged in");
+    window.location.replace("/")
   }
 
   const paperstyle = { padding: 20, height: '70vh', width: 300, margin: '90px auto' }
