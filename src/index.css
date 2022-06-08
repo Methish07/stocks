@@ -1,7 +1,14 @@
 .seperator{
     display:flex;
     flex-direction:row;
-
+    justify-content: space-between;
+}
+.sidebar{
+    padding: 5px;
+    margin: 5px;
+    background-color: aqua;
+    width: 200px;
+    height: 100%;
 }
 .plot_sep{
     display: flex;
@@ -11,4 +18,15 @@
     display: flex;
     flex-direction: column;
     margin-right: 0;
+}
+.btn{
+    background-color: crimson;
+    padding: 5px;
+    border-radius: 2px;
+    margin: 2px;
+    color: white;
+    border-color: none;
+}
+h1{
+    text-align: center;
 }

@@ -2,20 +2,21 @@ import React from 'react'
 import { Avatar, Grid, Paper, TextField, Button } from '@material-ui/core'
 import './index.css'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Navbar from './navbar'
 const Login = () => {
   const [username, setusername] = useState('');
   const [password, setpassword] = useState('');
 
+ 
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(username);
     console.log(password);
     setusername('');
     setpassword('');
-
-
+    alert(username+"sucessfully logged in");
+    window.
   }
 
   const paperstyle = { padding: 20, height: '70vh', width: 300, margin: '90px auto' }

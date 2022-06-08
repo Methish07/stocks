@@ -1,6 +1,51 @@
- <input type="text"
-    id="stock_name"
-    label=""
-    value={stock_name}
-    onChange={(e)=>{setstock_name(e.target.value)}}
-  />
+import React, { useEffect, useState } from 'react'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Demo from './bar'
+const Stocks = () => {
+
+  const [stock_name,setstock_name]=useState('')
+  const [stock_region,setstock_region]=useState('')
+  const [stock_list1,setstock_list1]=useState([])
+  const [stock_list2,setstock_list2]=useState([])
+
+const SubmitHandler=(e)=>{
+setstock_list1((stock_list1)=>{
+  stock_list1.concat(stock_name)
+})
+setstock_list2([...stock_list2,stock_region])
+setstock_name('')
+setstock_region('')
+
+}
+const getinput=()=>{
+  setstock_name(prompt("enter stock symbol"));
+  setstock_region(prompt("enter the region "))
+}
+
+  return (
+    <div className='sidebar'>
+<form>
+<input type="button" value="enter symbol" onClick={getinput}></input>
+
+  <input type="button" value="add stock" onClick={SubmitHandler}></input>
+
+</form>
+<div className='seperator'>
+{
+  stock_list1.map((i)=>{
+    return(
+      <div key={i}>
+        <Button >{i}</Button>
+        </div>
+    )
+  })
+}
+</div>
+    </div>
+  )
+}
+
+
+export default Stocks
+
